@@ -1,4 +1,4 @@
-module tuple
+module gitlab.eiselecloud.de/matrix/tuple
 
 go 1.14
 
