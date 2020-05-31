@@ -2,6 +2,8 @@
 
 A simple, low-level matrix <--> mqtt "bridge".
 
+[#tuple:eiselecloud.de](https://matrix.to/#/#tuple:eiselecloud.de)
+
 ## Usage
 
 `go get gitlab.eiselecloud.de/matrix/tuple`
