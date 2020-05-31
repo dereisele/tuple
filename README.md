@@ -8,6 +8,8 @@ A simple, low-level matrix <--> mqtt "bridge".
 
 `tuple -homeserver https://matrix.org -username tuple -password secret -broker tcp://localhost:1883`
 
+The rooms have to joined manually at this point via another client.
+
 ## Matrix -> MQTT
 
 The bridge will send all Matrix Message Events to:
