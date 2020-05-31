@@ -43,7 +43,7 @@ var cbMatrix gomatrix.OnEventListener = func(evt *gomatrix.Event) {
 }
 
 func sendMqttMessage(message *gomatrix.Event) {
-	topicRaw := fmt.Sprintf("_tuple/client/r0/rooms/%[1]s/event/%[2]s/%[3]s", message.RoomID, message.ID, message.Type)
+	topicRaw := fmt.Sprintf("_tuple/client/r0/rooms/%[1]s/event/%[2]s/%[3]s", message.RoomID, message.Type, message.ID)
 
 	re := strings.NewReplacer("$", "")
 
