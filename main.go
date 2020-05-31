@@ -10,6 +10,7 @@ import (
 var homeserver = flag.String("homeserver", "https://matrix.org", "Matrix homeserver")
 var username = flag.String("username", "", "Matrix username localpart")
 var password = flag.String("password", "", "Matrix password")
+var mqttBroker = flag.String("broker", "tcp://localhost:1883", "The MQTT Broker")
 
 func main() {
 	flag.Parse()

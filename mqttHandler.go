@@ -10,7 +10,7 @@ import (
 var mqttClient mqtt.Client
 
 func initMqtt() {
-	opts := mqtt.NewClientOptions().AddBroker("tcp://localhost:1883").SetClientID("mx-tuple")
+	opts := mqtt.NewClientOptions().AddBroker(*mqttBroker).SetClientID("mx-tuple")
 	mqttClient = mqtt.NewClient(opts)
 }
 
