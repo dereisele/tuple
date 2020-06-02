@@ -51,7 +51,7 @@ func sendMqttMessage(message *gomatrix.Event) {
 	p := string(payload)
 	fmt.Println(p)
 
-	if token := mqttClient.Publish(topic, 1, false, payload); token.Wait() && token.Error() != nil {
+	if token := mqttClient.Publish(topic, 0, false, payload); token.Wait() && token.Error() != nil {
 		fmt.Println(token.Error())
 	}
 	fmt.Print("send")
