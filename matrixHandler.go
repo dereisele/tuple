@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/matrix-org/gomatrix"
-	"strings"
 )
 
 var matrixClient *gomatrix.Client
@@ -43,11 +42,7 @@ var cbMatrix gomatrix.OnEventListener = func(evt *gomatrix.Event) {
 }
 
 func sendMqttMessage(message *gomatrix.Event) {
-	topicRaw := fmt.Sprintf("_tuple/client/r0/rooms/%[1]s/event/%[2]s/%[3]s", message.RoomID, message.Type, message.ID)
-
-	re := strings.NewReplacer("$", "")
-
-	topic := re.Replace(topicRaw)
+	topic := fmt.Sprintf("_tuple/client/r0/rooms/%[1]s/event/%[2]s", message.RoomID, message.Type)
 	payload, err := json.Marshal(message)
 	if err != nil {
 		fmt.Println(err)
