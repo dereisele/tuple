@@ -16,7 +16,7 @@ The rooms have to joined manually at this point via another client.
 
 The bridge will send all Matrix Message Events to:
 
-Topic: `_tuple/client/r0/rooms/<roomId>/event/<eventType>/<eventId>`
+Topic: `_tuple/client/r0/rooms/<roomId>/event/<eventType>`
 
 Content: _the received Matrix event_, like 
 ```json
@@ -56,6 +56,8 @@ Note that `tuple` will happily receive its own Matrix events and publish them to
 
 * Just for fun
 * Small IOT devices, like the ESP32 that don't require persistence or other advanced Matrix features
+* A federated sensor network
+* Smart Home stuff
 
 ## Design
 
