@@ -12,6 +12,18 @@ A simple, low-level matrix <--> mqtt "bridge".
 
 The rooms have to joined manually at this point via another client.
 
+Configuration using environment vars is also possible:
+- `USERNAME`
+- `PASSWORD`
+- `HOMESERVER`
+- `BROKER`
+
+The command line args overwrite these.
+
+## Docker
+
+There's a reproducible docker image available at `docker.eiselecloud.de/matrix/tuple`.
+
 ## Matrix -> MQTT
 
 The bridge will send all Matrix Message Events to:
