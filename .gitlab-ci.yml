@@ -3,7 +3,7 @@ image: golang:latest
 variables:
   # Please edit to your GitLab project
   REPO_NAME: gitlab.eiselecloud.de/matrix/tuple
-  
+
 before_script:
   - mkdir -p $GOPATH/src/$(dirname $REPO_NAME)
   - ln -svf $CI_PROJECT_DIR $GOPATH/src/$REPO_NAME
@@ -11,6 +11,7 @@ before_script:
 
 stages:
   - build
+  - package
 
 compile:
   stage: build
@@ -19,3 +20,12 @@ compile:
   artifacts:
     paths:
       - tuple
+
+docker:
+  stage: package
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  script:
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile.ci --destination "$CI_REGISTRY_IMAGE:$CI_COMMIT_SLUG" --reproducible
