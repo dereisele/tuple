@@ -7,10 +7,10 @@ import (
 	"syscall"
 )
 
-var homeserver = flag.String("homeserver", "https://matrix.org", "Matrix homeserver")
-var username = flag.String("username", "", "Matrix username localpart")
-var password = flag.String("password", "", "Matrix password")
-var mqttBroker = flag.String("broker", "tcp://localhost:1883", "The MQTT Broker")
+var homeserver = flag.String("homeserver", getEnv("HOMESERVER", "https://matrix.org"), "Matrix homeserver")
+var username = flag.String("username", getEnv("USERNAME", "tuple"), "Matrix username localpart")
+var password = flag.String("password", getEnv("PASSWORD", ""), "Matrix password")
+var mqttBroker = flag.String("broker", getEnv("BROKER", "tcp://localhost:1883"), "The MQTT Broker")
 
 func main() {
 	flag.Parse()
@@ -22,4 +22,11 @@ func main() {
 	go startMatrix()
 	go startMqtt()
 	<-c
+}
+
+func getEnv(key, fallback string) string {
+	if value, ok := os.LookupEnv(key); ok {
+		return value
+	}
+	return fallback
 }
