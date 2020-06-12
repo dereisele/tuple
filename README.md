@@ -54,6 +54,7 @@ Note that `tuple` will happily receive its own Matrix events and publish them to
 
 ## Use cases
 
+* [Weather Station Example](https://github.com/derEisele/tuple-weather-example)
 * Just for fun
 * Small IOT devices, like the ESP32 that don't require persistence or other advanced Matrix features
 * A federated sensor network
